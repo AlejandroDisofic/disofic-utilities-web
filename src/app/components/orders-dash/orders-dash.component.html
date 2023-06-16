@@ -1,0 +1,61 @@
+<div class="container-fluid p-4">
+    <h3>Pedidos con errores del Portal de Compras</h3>
+    <p>Estos pedidos no han podido importarse en Odoo</p>
+    <div class="row">
+        <table mat-table [dataSource]="dataSource" matSort class="w-100">
+          <!-- Name Column -->
+          <ng-container matColumnDef="order">
+            <th mat-header-cell *matHeaderCellDef> Pedido </th>
+            <td mat-cell *matCellDef="let element"> {{element?.PEDIDO}} </td>
+          </ng-container>
+          <!-- Adjustment Column -->
+          <ng-container matColumnDef="client">
+            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{element?.CLIENTE}} </td>
+          </ng-container>
+          <!-- Cubic Capacity Column -->
+          <ng-container matColumnDef="address_name">
+            <th mat-header-cell *matHeaderCellDef> Nombre de Envío </th>
+            <td mat-cell *matCellDef="let element"> {{element?.NOM_ENVIO}} </td>
+          </ng-container>
+          <!-- Cubic Capacity Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Dirección </th>
+            <td mat-cell *matCellDef="let element"> {{element?.DOM_ENVIO}} </td>
+          </ng-container>
+          <!-- State Column -->
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef> Población </th>
+            <td mat-cell *matCellDef="let element; let index = index"> {{ element?.POB_ENVIO}}</td>
+          </ng-container>
+          <!-- State Column -->
+          <ng-container matColumnDef="zip">
+            <th mat-header-cell *matHeaderCellDef> Código postal </th>
+            <td mat-cell *matCellDef="let element; let index = index"> {{ element?.CODPOST_ENVIO}}</td>
+          </ng-container>
+          <!-- Service Type Column -->
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> Total </th>
+            <td mat-cell *matCellDef="let element"> {{element?.TOTAL}} </td>
+          </ng-container>
+          <!-- Route Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element?.FECHA_INSERT | date:'dd/mm/yyyy'}} </td>
+          </ng-container>
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ver Error </th>
+            <td mat-cell *matCellDef="let element">
+              <button class="btn btn-primary btn-block">
+                <i class="bi bi-eye-fill"></i>
+              </button>
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[15, 30, 100]"></mat-paginator> -->
+    </div>
+  </div>
